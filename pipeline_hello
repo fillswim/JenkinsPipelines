@@ -1,0 +1,15 @@
+pipeline {
+    agent {
+        label 'ansible'
+    }
+
+    stages {
+        stage('Restart Wireguard') {
+            steps {
+                dir('/home/fill/ansible'){
+                    sh 'ansible-playbook PB_WG_Restart.yml'
+                }
+            }
+        }
+    }
+}
