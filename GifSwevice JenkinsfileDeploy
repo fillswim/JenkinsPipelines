@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        label 'prod'
+        label 'node1'
     }
     options {
         skipDefaultCheckout()
@@ -9,32 +9,17 @@ pipeline {
     stages {
         stage('Docker stop') {
             steps {
-                echo "========== Docker-compose down =========="
+                echo "========== Docker stop =========="
                 sh 'docker stop mygifservice'
             }
         }
 
         stage('Remove old docker image') {
             steps {
-                echo "====== Remove old image ======"
+                echo "====== Remove old docker image ======"
                 sh 'docker rmi -f fillswim/mygifservice:latest'
             }
         }
-
-//        stage('Load docker-compose.yaml') {
-//            steps {
-//                echo "====== Load docker-compose.yaml ======"
-//                sh 'rm -f docker-compose.yaml'
-//                sh 'wget https://raw.githubusercontent.com/fillswim/MySocialNetworkingSite/master/docker-compose.yaml'
-//            }
-//        }
-
-//        stage('Docker login') {
-//            steps {
-//                echo "======== Docker login ========"
-//                sh 'cat /home/ubuntu/docker_password.txt | docker login --username fillswim --password-stdin'
-//            }
-//        }
 
         stage('Docker pull') {
             steps {
