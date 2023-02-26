@@ -7,7 +7,7 @@ pipeline {
         stage('Restart Wireguard') {
             steps {
                 dir('/home/fill/ansible'){
-                    sh 'ansible-playbook PB_WG_Restart.yml'
+                    sh 'ansible-playbook Wireguard_Restart.yml'
                 }
             }
         }
