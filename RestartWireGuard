@@ -6,8 +6,12 @@ pipeline {
     stages {
         stage('Restart Wireguard') {
             steps {
-                dir('/home/fill/ansible'){
-                    sh 'ansible-playbook Wireguard_Restart.yml'
+                ansiColor('xterm') {
+                    ansiblePlaybook(
+                        playbook: '/home/fill/ansible/Ping.yml',
+                        inventory: '/home/fill/ansible/hosts.txt',
+                        credentialsId: 'Jenkins_PrivateKey',
+                        colorized: true)
                 }
             }
         }
