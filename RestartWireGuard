@@ -8,7 +8,7 @@ pipeline {
             steps {
                 ansiColor('xterm') {
                     ansiblePlaybook(
-                        playbook: '/home/fill/ansible/Ping.yml',
+                        playbook: '/home/fill/ansible/Wireguard_Restart.yml',
                         inventory: '/home/fill/ansible/hosts.txt',
                         credentialsId: 'Jenkins_PrivateKey',
                         colorized: true)
