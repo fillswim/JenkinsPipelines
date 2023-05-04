@@ -4,7 +4,7 @@ pipeline {
     }
 
     tools {
-        gradle 8.2
+        Gradle 8.1.1
     }
 
     stages {
