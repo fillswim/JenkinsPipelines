@@ -8,9 +8,9 @@ pipeline {
     }
 
     stages {
-        stage('Git pull') {
+        stage('Gradle version') {
             steps {
-                echo "====== Git pull ======"
+                echo "====== Gradle version ======"
                 sh 'gradle --version'
             }
         }
