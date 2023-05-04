@@ -1,0 +1,19 @@
+pipeline {
+    agent {
+        label 'builder'
+    }
+
+    tools {
+        Gradle 8.2
+    }
+
+    stages {
+        stage('Git pull') {
+            steps {
+                echo "====== Git pull ======"
+                sh 'gradle --version'
+            }
+        }
+
+    }
+}
