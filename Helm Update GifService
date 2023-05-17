@@ -1,0 +1,25 @@
+pipeline {
+    agent {
+        label 'ansible'
+    }
+
+    stages {
+        stage('Helm update GifService') {
+            steps {
+                ansiColor('xterm') {
+                    ansiblePlaybook(
+                        playbook: '/home/fill/ansible/Helm_Update.yml',
+                        inventory: '/home/fill/ansible/hosts.txt',
+                        credentialsId: 'Jenkins_PrivateKey',
+                        extraVars: [
+                            helm_name: 'my-gifservice',
+                            helm_repo: 'fillswimrepo/my-template-helmchart',
+                            helm_namespace: 'default',
+                            new_image: 'fillswim/mygifservice:latest'
+                        ],
+                        colorized: true)
+                }
+            }
+        }
+    }
+}
