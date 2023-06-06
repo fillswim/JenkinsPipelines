@@ -3,6 +3,10 @@ pipeline {
         label 'builder'
     }
 
+    tools {
+        gradle 'Gradle 8.1.1'
+    }
+
     stages {
         stage('Git pull') {
             steps {
@@ -14,7 +18,9 @@ pipeline {
         stage('Gradle build') {
             steps {
                 echo "====== Gradle build ======"
-                sh './gradlew clean build'
+                withGradle {
+                    sh 'gradle clean build'
+                }
             }
         }
 
@@ -43,17 +49,17 @@ pipeline {
         stage('Docker push') {
 
             environment {
-                    DISCRORD_WEBHOOK_LINK = credentials('Discord_webhook')
+                DISCRORD_WEBHOOK_LINK = credentials('Discord_webhook')
             }
 
             steps {
                 echo "======== Docker push ========"
                 sh 'docker push fillswim/mygifservice:latest'
 
-                discordSend description: "GifService Build", 
-		        link: env.BUILD_URL, 
-		        result: currentBuild.currentResult, 
-		        title: JOB_NAME, 
+                discordSend description: "GifService Build",
+                link: env.BUILD_URL,
+                result: currentBuild.currentResult,
+                title: JOB_NAME,
                 webhookURL: DISCRORD_WEBHOOK_LINK
 
             }
