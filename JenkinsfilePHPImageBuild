@@ -29,7 +29,7 @@ pipeline {
 
         }
 
-        stage('Docker login') {
+        stage('DockerHub login') {
             steps {
                 echo "======== Docker login ========"
                 sh 'cat /home/filldocker/dockerhub_token.txt | docker login --username fillswim --password-stdin'
