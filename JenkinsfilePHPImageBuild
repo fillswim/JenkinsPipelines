@@ -7,7 +7,6 @@ pipeline {
         stage('Load files') {
             steps {
                 echo "====== Load docker-compose.yaml ======"
-                sh 'rm -f docker-compose.yaml'
                 sh 'wget https://raw.githubusercontent.com/fillswim/K8SManifests/master/Lesson-06-DockerImage/Dockerfile'
                 sh 'wget https://raw.githubusercontent.com/fillswim/K8SManifests/master/Lesson-06-DockerImage/index.php'
             }
