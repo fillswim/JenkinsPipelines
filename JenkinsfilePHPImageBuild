@@ -27,7 +27,7 @@ pipeline {
             steps {
                 echo "====== Docker build ======"
                 sh 'pwd'
-                sh 'docker build -t fillswim/myphpimage:latest .'
+                sh 'docker build -t fillswim/myphpimage:latest -f DockerfileUbuntu .'
             }
 
         }
