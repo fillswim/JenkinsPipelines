@@ -19,7 +19,7 @@ pipeline {
         stage('Remove old docker images') {
             steps {
                 echo "====== Remove old image ======"
-                sh 'docker rmi -f fillswim/mySiteUbuntuApache:latest'
+                sh 'docker rmi -f fillswim/mysite_ubuntu_apache:latest'
             }
         }
 
@@ -27,7 +27,7 @@ pipeline {
             steps {
                 echo "====== Docker build ======"
                 sh 'pwd'
-                sh 'docker build -t fillswim/mySiteUbuntuApache:latest -f DockerfileUbuntuApache .'
+                sh 'docker build -t fillswim/mysite_ubuntu_apache:latest -f DockerfileUbuntuApache .'
             }
 
         }
@@ -46,10 +46,10 @@ pipeline {
             }
 
             steps {
-                echo "======== mySiteUbuntuApache push ========"
-                sh 'docker push fillswim/mySiteUbuntuApache:latest'
+                echo "======== mysite_ubuntu_apache push ========"
+                sh 'docker push fillswim/mysite_ubuntu_apache:latest'
 
-                discordSend description: "mySiteUbuntuApache image has been pushed",
+                discordSend description: "mysite_ubuntu_apache image has been pushed",
                 link: env.BUILD_URL,
                 result: currentBuild.currentResult,
                 title: JOB_NAME,
