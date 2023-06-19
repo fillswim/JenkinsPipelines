@@ -11,15 +11,15 @@ pipeline {
         stage('Load files') {
             steps {
                 echo "====== Load files ======"
-                sh 'wget https://raw.githubusercontent.com/fillswim/K8SManifests/master/Lesson-06-DockerImage/DockerfileUbuntu'
+                sh 'wget https://raw.githubusercontent.com/fillswim/K8SManifests/master/Lesson-06-DockerImage/DockerfileUbuntuApache'
                 sh 'wget https://raw.githubusercontent.com/fillswim/K8SManifests/master/Lesson-06-DockerImage/index.php'
             }
         }
 
-        stage('Remove old docker image') {
+        stage('Remove old docker images') {
             steps {
                 echo "====== Remove old image ======"
-                sh 'docker rmi -f fillswim/myphpimage:latest'
+                sh 'docker rmi -f fillswim/mySiteUbuntuApache:latest'
             }
         }
 
@@ -27,7 +27,7 @@ pipeline {
             steps {
                 echo "====== Docker build ======"
                 sh 'pwd'
-                sh 'docker build -t fillswim/myphpimage:latest -f DockerfileUbuntu .'
+                sh 'docker build -t fillswim/mySiteUbuntuApache:latest -f DockerfileUbuntuApache .'
             }
 
         }
@@ -46,10 +46,10 @@ pipeline {
             }
 
             steps {
-                echo "======== Docker push ========"
-                sh 'docker push fillswim/myphpimage:latest'
+                echo "======== mySiteUbuntuApache push ========"
+                sh 'docker push fillswim/mySiteUbuntuApache:latest'
 
-                discordSend description: "PHPImage Build",
+                discordSend description: "mySiteUbuntuApache image has been pushed",
                 link: env.BUILD_URL,
                 result: currentBuild.currentResult,
                 title: JOB_NAME,
