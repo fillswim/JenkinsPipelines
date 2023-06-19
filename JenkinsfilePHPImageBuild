@@ -3,10 +3,14 @@ pipeline {
         label 'builder'
     }
 
+    options {
+        skipDefaultCheckout()
+    }
+
     stages {
         stage('Load files') {
             steps {
-                echo "====== Load docker-compose.yaml ======"
+                echo "====== Load files ======"
                 sh 'wget https://raw.githubusercontent.com/fillswim/K8SManifests/master/Lesson-06-DockerImage/Dockerfile'
                 sh 'wget https://raw.githubusercontent.com/fillswim/K8SManifests/master/Lesson-06-DockerImage/index.php'
             }
