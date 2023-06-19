@@ -11,7 +11,7 @@ pipeline {
         stage('Load files') {
             steps {
                 echo "====== Load files ======"
-                sh 'wget https://raw.githubusercontent.com/fillswim/K8SManifests/master/Lesson-06-DockerImage/Dockerfile'
+                sh 'wget https://raw.githubusercontent.com/fillswim/K8SManifests/master/Lesson-06-DockerImage/DockerfileUbuntu'
                 sh 'wget https://raw.githubusercontent.com/fillswim/K8SManifests/master/Lesson-06-DockerImage/index.php'
             }
         }
