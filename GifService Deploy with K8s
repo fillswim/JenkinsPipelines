@@ -13,7 +13,7 @@ pipeline {
                         credentialsId: 'Jenkins_PrivateKey',
                         extraVars: [
                             helm_name: 'my-gifservice',
-                            helm_namespace: 'default',
+                            helm_namespace: 'mygifservice-jenkins',
                             file: '/home/fill/K8SManifests/HelmChart_values_gifservice.yaml'
                         ],
                         colorized: true)
