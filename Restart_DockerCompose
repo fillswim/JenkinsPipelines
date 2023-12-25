@@ -12,6 +12,8 @@ pipeline {
 
             steps {
 
+                sh 'ls -la'
+
                 ansiColor('xterm') {
                     ansiblePlaybook(
                         // playbook: '/home/fill/ansible/playbooks/Wireguard_Restart.yml',
