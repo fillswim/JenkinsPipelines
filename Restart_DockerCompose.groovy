@@ -4,7 +4,7 @@ pipeline {
     }
 
     stages {
-        stage('Restart Wireguard') {
+        stage('Restart_DockerCompose') {
 
             // environment {
             //         DISCRORD_WEBHOOK_LINK = credentials('Discord_webhook')
