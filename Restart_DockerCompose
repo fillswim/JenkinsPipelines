@@ -12,7 +12,7 @@ pipeline {
 
             steps {
 
-                sh 'ls -la'
+                sh 'ansible --version'
 
                 ansiColor('xterm') {
                     ansiblePlaybook(
