@@ -14,8 +14,9 @@ pipeline {
 
                 ansiColor('xterm') {
                     ansiblePlaybook(
-                        playbook: '/home/fill/ansible/Wireguard_Restart.yml',
-                        inventory: '/home/fill/ansible/hosts.txt',
+                        // playbook: '/home/fill/ansible/playbooks/Wireguard_Restart.yml',
+                        playbook: '/home/fill/ansible/playbooks/Ping.yml',
+                        inventory: '/home/fill/ansible/inventory/wg_servers.ini',
                         credentialsId: 'Jenkins_PrivateKey',
                         colorized: true)
                 }
