@@ -5,29 +5,14 @@ pipeline {
 
     stages {
         stage('Restart_DockerCompose') {
-
-            // environment {
-            //         DISCRORD_WEBHOOK_LINK = credentials('Discord_webhook')
-            // }
-
             steps {
-
                 sh 'ansible --version'
-
                 ansiColor('xterm') {
                     ansiblePlaybook(
-                        // playbook: '/home/fill/ansible/playbooks/Ping.yml',
                         playbook: '/home/fill/ansible/playbooks/Restart_DockerContainer.yml',
                         inventory: '/home/fill/ansible/inventory/wg_servers.ini',
-                        // credentialsId: 'Jenkins_PrivateKey',
                         colorized: true)
                 }
-
-                // discordSend description: "Restart Wireguard", 
-		        // link: env.BUILD_URL, 
-		        // result: currentBuild.currentResult, 
-		        // title: JOB_NAME, 
-                // webhookURL: DISCRORD_WEBHOOK_LINK
             }
         }
     }
